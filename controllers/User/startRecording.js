@@ -77,7 +77,7 @@ exports.startRecording = async (req, res) => {
                     videoStreamType: 0,
                     maxIdleTime: 200,
                     subscribeAudioUids: ["#allstream#"],
-                    subscribeVideoUids: [`${uid}`],
+                    subscribeVideoUids: ["#allstream#"],
                     subscribeUidGroup: 0
                 },
                 recordingFileConfig: {
