@@ -16,7 +16,7 @@ exports.startRecording = async (req, res) => {
         //cname is passed as a string
         //token is passed as a string
 
-        const uid = req.body.uid;
+        const uid = 1234;
         // Step 1: Acquire a recording resource
 
         const body = {

@@ -71,6 +71,9 @@ const eKYCSchema = new Schema(
         ekycRecording: {
             type: String
         },
+        customerPhoto: {
+            type: String
+        },
 
     },
     {

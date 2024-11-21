@@ -45,20 +45,24 @@ exports.createNewCustomer = async (req, res) => {
         const pancardImage = req.files['pancardImage'][0];
         const aadharFrontImage = req.files['aadharFrontImage'][0];
         const aadharBackImage = req.files['aadharBackImage'][0];
+        const customerPhoto = req.files['customerPhoto'][0];
 
 
         const aadharFileName = `AadharFrontImages/${currentCustomer.customerId}/${Date.now()}-${aadharFrontImage.originalname}`;
         const aadharBackFileName = `AadharBackImages/${currentCustomer.customerId}/${Date.now()}-${aadharBackImage.originalname}`;
         const pancardFileName = `PancardImages/${currentCustomer.customerId}/${Date.now()}-${pancardImage.originalname}`;
+        const customerPhotoFileName = `CustomerPhotos/${currentCustomer.customerId}/${Date.now()}-${customerPhoto.originalname}`;
 
         const aadharFrontUrl = await FileUpload.upload(aadharFrontImage.buffer, aadharFileName);
         const aadharBackUrl = await FileUpload.upload(aadharBackImage.buffer, aadharBackFileName);
         const pancardUrl = await FileUpload.upload(pancardImage.buffer, pancardFileName);
+        const customerPhotoUrl = await FileUpload.upload(customerPhoto.buffer, customerPhotoFileName);
 
         newEKYC.fullName = currentCustomer.fullName;
         newEKYC.aadharFrontImage = aadharFrontUrl;
         newEKYC.aadharBackImage = aadharBackUrl;
         newEKYC.pancardImage = pancardUrl;
+        newEKYC.customerPhoto = customerPhotoUrl;
 
 
 

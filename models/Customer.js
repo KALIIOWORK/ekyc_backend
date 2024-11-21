@@ -61,7 +61,10 @@ const CustomerSchema = new Schema(
                 type: Schema.Types.ObjectId,
                 ref: 'eKYC'
             }
-        ]
+        ],
+        customerPhoto: {
+            type: String
+        },
 
     },
     {

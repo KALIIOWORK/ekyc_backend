@@ -11,7 +11,7 @@ exports.stopRecording = async (req, res) => {
 
         console.log(req.body);
 
-        const uid = req.body.uid;
+        const uid = 1234; // User ID
         const sid = req.body.sid;
 
         // Step 1: Prepare the request body to stop the recording
