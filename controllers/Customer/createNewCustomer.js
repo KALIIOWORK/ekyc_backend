@@ -41,18 +41,23 @@ exports.createNewCustomer = async (req, res) => {
 
         const newEKYC = new eKYC(req.body);
 
-        const aadharImage = req.files['aadharImage'][0];
+
         const pancardImage = req.files['pancardImage'][0];
+        const aadharFrontImage = req.files['aadharFrontImage'][0];
+        const aadharBackImage = req.files['aadharBackImage'][0];
 
 
-        const aadharFileName = `AadharImages/${currentCustomer.customerId}/${Date.now()}-${aadharImage.originalname}`;
+        const aadharFileName = `AadharFrontImages/${currentCustomer.customerId}/${Date.now()}-${aadharFrontImage.originalname}`;
+        const aadharBackFileName = `AadharBackImages/${currentCustomer.customerId}/${Date.now()}-${aadharBackImage.originalname}`;
         const pancardFileName = `PancardImages/${currentCustomer.customerId}/${Date.now()}-${pancardImage.originalname}`;
 
-        const aadharUrl = await FileUpload.upload(aadharImage.buffer, aadharFileName);
+        const aadharFrontUrl = await FileUpload.upload(aadharFrontImage.buffer, aadharFileName);
+        const aadharBackUrl = await FileUpload.upload(aadharBackImage.buffer, aadharBackFileName);
         const pancardUrl = await FileUpload.upload(pancardImage.buffer, pancardFileName);
 
         newEKYC.fullName = currentCustomer.fullName;
-        newEKYC.aadharImage = aadharUrl;
+        newEKYC.aadharFrontImage = aadharFrontUrl;
+        newEKYC.aadharBackImage = aadharBackUrl;
         newEKYC.pancardImage = pancardUrl;
 
 

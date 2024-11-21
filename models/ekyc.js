@@ -39,7 +39,10 @@ const eKYCSchema = new Schema(
         aadharNumber: {
             type: Number
         },
-        aadharImage: {
+        aadharFrontImage: {
+            type: String
+        },
+        aadharBackImage: {
             type: String
         },
         pancardNumber: {
