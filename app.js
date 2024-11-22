@@ -12,7 +12,7 @@ var cron = require('node-cron');
 require("dotenv").config();
 require("./config/db");
 
-app.use(cors({ origin: 'https://ekyc.tech' }));
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
