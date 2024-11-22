@@ -12,11 +12,24 @@ var cron = require('node-cron');
 require("dotenv").config();
 require("./config/db");
 
-app.use(cors({
-    origin: 'https://ekyc.tech', // Replace with your frontend's domain
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // Allow cookies to be sent with requests
-}));
+const corsOptions = {
+    origin: 'https://ekyc.tech',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Authorization', 'Content-Type'],
+    credentials: true,
+};
+
+app.use(cors(corsOptions));
+
+// Explicitly handle preflight OPTIONS requests
+app.options('*', (req, res) => {
+    res.header('Access-Control-Allow-Origin', 'https://ekyc.tech');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Authorization, Content-Type');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.sendStatus(204);
+});
+
 
 // app.use(cors(corsOptions));
 
