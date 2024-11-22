@@ -74,6 +74,21 @@ const eKYCSchema = new Schema(
         customerPhoto: {
             type: String
         },
+        agentuid: {
+            type: Number
+        },
+        channelName: {
+            type: String
+        },
+        agenttoken: {
+            type: String
+        },
+        startRecordinguid: {
+            type: Number
+        },
+        startRecordingtoken: {
+            type: String
+        },
 
     },
     {

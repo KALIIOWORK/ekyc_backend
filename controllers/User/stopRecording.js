@@ -11,13 +11,13 @@ exports.stopRecording = async (req, res) => {
 
         console.log(req.body);
 
-        const uid = 1234; // User ID
+        const uid = req.body.startRecordinguid;
         const sid = req.body.sid;
 
         // Step 1: Prepare the request body to stop the recording
         const stopRecordingData = {
             cname: cname,  // Channel name
-            uid: `${uid}`,      // User ID
+            uid: uid,      // User ID
             clientRequest: {
                 async_stop: false  // This means you want to wait for the API response
             }

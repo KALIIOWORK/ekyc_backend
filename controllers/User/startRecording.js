@@ -16,12 +16,13 @@ exports.startRecording = async (req, res) => {
         //cname is passed as a string
         //token is passed as a string
 
-        const uid = 1234;
+        const uid = req.body.startRecordinguid;
+        console.log("startRecordinguid", uid)
         // Step 1: Acquire a recording resource
 
         const body = {
             cname: req.body.cname, // Channel name
-            uid: `${uid}`,     // User ID
+            uid: uid,     // User ID
             clientRequest: {
                 resourceExpiredHour: 24, // Resource valid for 24 hours
                 scene: 0                // Default scene for recording
@@ -32,7 +33,7 @@ exports.startRecording = async (req, res) => {
             acquireUrl, // The API endpoint
             {
                 cname: req.body.cname, // Channel name
-                uid: `${uid}`,     // User ID
+                uid: uid,     // User ID
                 clientRequest: {
                     resourceExpiredHour: 24, // Resource valid for 24 hours
                     scene: 0                // Default scene for recording
@@ -67,9 +68,9 @@ exports.startRecording = async (req, res) => {
         const startBody = {
 
             cname: req.body.cname,
-            uid: `${uid}`,
+            uid: uid,
             clientRequest: {
-                token: req.body.token,
+                token: req.body.startRecordingtoken,
                 recordingConfig: {
                     channelType: 1,
                     streamTypes: 2,
@@ -116,6 +117,8 @@ exports.startRecording = async (req, res) => {
         // }
 
         // Step 5: Return a success response
+
+        console.log("sid", startResponse.data.sid)
         res.status(200).json({
             status: true,
             message: "Recording started successfully",
