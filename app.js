@@ -12,12 +12,13 @@ var cron = require('node-cron');
 require("dotenv").config();
 require("./config/db");
 
-const corsOptions = {
-    origin: 'https://ekyc.tech', // Allow only your frontend
-    credentials: true,
-};
+app.use(cors({
+    origin: 'https://ekyc.tech', // Replace with your frontend's domain
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // Allow cookies to be sent with requests
+}));
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // //Cors Access
 // app.use((req, res, next) => {
