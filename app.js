@@ -13,22 +13,10 @@ require("dotenv").config();
 require("./config/db");
 
 const corsOptions = {
-    origin: 'https://ekyc.tech',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Authorization', 'Content-Type'],
-    credentials: true,
+    origin: false, // Disable backend CORS since Nginx handles it
 };
 
 app.use(cors(corsOptions));
-
-// Explicitly handle preflight OPTIONS requests
-app.options('*', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'https://ekyc.tech');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Authorization, Content-Type');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.sendStatus(204);
-});
 
 
 // app.use(cors(corsOptions));
