@@ -13,23 +13,20 @@ require("dotenv").config();
 require("./config/db");
 
 const corsOptions = {
-    origin: 'https://ekyc.tech', // Allow only your frontend origin
-    credentials: true,           // Include cookies if required
+    origin: 'https://ekyc.tech', // Allow only your frontend
+    credentials: true,
 };
 
 app.use(cors(corsOptions));
 
-// Ensure CORS headers are present for OPTIONS preflight requests
-app.options('*', cors(corsOptions));
-
-//Cors Access
-app.use((req, res, next) => {
-    // res.setHeader('Access-Control-Allow-Origin', 'https://ekyc.tech'); // Frontend origin
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.setHeader('Access-Control-Allow-Credentials', 'true'); // If cookies are needed
-    next();
-});
+// //Cors Access
+// app.use((req, res, next) => {
+//     // res.setHeader('Access-Control-Allow-Origin', 'https://ekyc.tech'); // Frontend origin
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+//     res.setHeader('Access-Control-Allow-Credentials', 'true'); // If cookies are needed
+//     next();
+// });
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
