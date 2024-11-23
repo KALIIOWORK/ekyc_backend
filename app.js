@@ -40,6 +40,10 @@ console.log(path.join(__dirname, '/public'))
 
 app.use(express.static(path.join(__dirname, '/public')))
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 
 const eKYCRoutes = require("./routes/eKYC")
 app.use("/api/v1/ekyc", eKYCRoutes)
