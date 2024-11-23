@@ -19,7 +19,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 
-// app.use(cors(corsOptions));
+//app.use(cors());
 
 // //Cors Access
 // app.use((req, res, next) => {

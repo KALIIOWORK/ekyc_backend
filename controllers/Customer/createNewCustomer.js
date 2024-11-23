@@ -80,8 +80,8 @@ exports.createNewCustomer = async (req, res) => {
         newEKYC.pancardImage = pancardUrl;
         newEKYC.customerPhoto = customerPhotoUrl;
 
-        const uid = Math.floor(100000000000 + Math.random() * 900000000000).toString();
-        const agentUID = Math.floor(100000000000 + Math.random() * 900000000000).toString();
+        const uid = Math.floor(10000000 + Math.random() * 90000000).toString();
+        const agentUID = Math.floor(10000000 + Math.random() * 90000000).toString();
         const startRecordinguid = Math.floor(10000 + Math.random() * 90000).toString(); // Generate a 5-digit number
 
 
@@ -136,12 +136,13 @@ exports.createNewCustomer = async (req, res) => {
 
         console.log('Start Recording Token:', startRecordingtoken)
 
-        newEKYC.uid = uid;
         newEKYC.channelName = channelName;
         newEKYC.agentuid = agentUID;
         newEKYC.agenttoken = agenttoken
         newEKYC.startRecordinguid = startRecordinguid;
         newEKYC.startRecordingtoken = startRecordingtoken;
+        newEKYC.customeruid = uid;
+        newEKYC.customerToken = tokenWithUidAndPrivilege;
 
         let doc = await newEKYC.save();
 

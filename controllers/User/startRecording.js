@@ -18,6 +18,10 @@ exports.startRecording = async (req, res) => {
 
         const uid = req.body.startRecordinguid;
         console.log("startRecordinguid", uid)
+        const customeruid = parseInt(req.body.customeruid, 10);
+        if (isNaN(customeruid) || customeruid < 0 || customeruid > 4294967295) {
+            throw new Error('Invalid customeruid. It must be a valid 32-bit unsigned integer.');
+        }
         // Step 1: Acquire a recording resource
 
         const body = {

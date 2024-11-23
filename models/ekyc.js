@@ -64,6 +64,10 @@ const eKYCSchema = new Schema(
             default: "Pending"
         },//Pending ,Rejected ,Verified
 
+        verificationComments: {
+            type: String
+        },
+
         ekycTime: {
             type: Date,
             default: Date.now()
@@ -87,6 +91,12 @@ const eKYCSchema = new Schema(
             type: Number
         },
         startRecordingtoken: {
+            type: String
+        },
+        customeruid: {
+            type: Number
+        },
+        customertoken: {
             type: String
         },
 
