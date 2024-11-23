@@ -1,11 +1,38 @@
-const jwt  = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
-exports.authenticate =(req,res,next) =>{
-    if(req.headers.authorization){
-        const token = req.headers.authorization.split(" ")[1];
-        const user =jwt.verify(token,process.env.JWT_SECRET);
-        req.user=user;
+const authenticate = (req, res, next) => {
+
+    //console.log(req.headers.authorization)
+    if (typeof (req.headers.authorization) == "undefined") {
+        res.status(401).json({
+            message: "Authorization token required!",
+        });
     }
-    else return res.status(400).json({message:'Authorization required'});
-    next();
-}
+
+    const token = req.headers.authorization.split(" ")[1];
+    //console.log(token)
+
+    jwt.verify(token, process.env.JWT_KEY, (err, decode) => {
+        if (err) {
+
+            if (err) {
+                if (err.name == "TokenExpiredError") {
+                    return res.status(401).json({
+                        message: "Authentication Timeout!",
+                    });
+                } else {
+                    return res.status(403).json({
+                        message: "Authentication Failed!",
+                        err,
+                    });
+                }
+            }
+
+        } else {
+            req.token = token;
+            next();
+        }
+    });
+};
+
+module.exports = { authenticate };
