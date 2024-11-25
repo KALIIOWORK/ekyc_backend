@@ -21,9 +21,15 @@ const pubDataStreamPrivilegeExpireInSeconds = 3600
 
 exports.createNewCustomer = async (req, res) => {
     try {
+
         if (!req.files) {
             throw new Error("Please upload Images");
         }
+        // else if (req.file.size > 4 * 1024 * 1024) {
+        //     throw new Error(
+        //         "Max File size of 4MB exceeded"
+        //     )
+        // }
 
         const customerexists = await Customer.findOne({ aadharNumber: req.body.aadharNumber })
 

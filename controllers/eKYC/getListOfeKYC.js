@@ -12,8 +12,8 @@ exports.getListOfeKYC = async (req, res) => {
             query.isVerified = req.query.isVerified;
         }
 
-        if (req.query.speakerStatus) {
-            query['speakerStatus'] = req.query.speakerStatus;
+        if (req.query.verificationStatus) {
+            query.verificationStatus = req.query.verificationStatus;
         }
 
 

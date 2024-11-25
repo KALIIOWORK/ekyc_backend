@@ -11,11 +11,13 @@ require('./config/db');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Enable CORS for API requests
+//Enable CORS for API requests
 const corsOptions = {
     origin: false,
 };
 app.use(cors(corsOptions));
+
+//app.use(cors());
 
 // Set static folder for public files
 app.use(express.static(path.join(__dirname, '/public')));
@@ -35,7 +37,7 @@ app.use('/api/v1/customer', CustomerRoutes);
 
 // Wildcard route for SPA
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/dist', 'index.html')); 
+    res.sendFile(path.join(__dirname, '/dist', 'index.html'));
 });
 
 // Start server
