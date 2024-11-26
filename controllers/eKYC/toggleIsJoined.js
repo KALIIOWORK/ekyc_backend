@@ -10,6 +10,17 @@ exports.toggleIsJoined = async (req, res) => {
                 message: 'eKYC not found'
             });
         }
+
+        if (req.body.isJoined === false || req.body.isJoined === "false") {
+            updateeKYC.isMissed = true;
+            updateeKYC.missedTime = new Date();
+        }
+
+        if (req.body.isJoined === true || req.body.isJoined === "true") {
+            updateeKYC.isMissed = false;
+            updateeKYC.missedTime = null;
+        }
+
         updateeKYC.isJoined = req.body.isJoined;
         let doc = await updateeKYC.save();
 

@@ -19,6 +19,9 @@ exports.getListOfeKYC = async (req, res) => {
         if (req.query.isJoined) {
             query.isJoined = req.query.isJoined;
         }
+        if (req.query.isMissed) {
+            query.isMissed = req.query.isMissed;
+        }
 
 
         let eKYCs

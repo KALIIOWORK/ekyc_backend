@@ -107,6 +107,13 @@ const eKYCSchema = new Schema(
             type: Boolean,
             default: false
         },
+        isMissed: {
+            type: Boolean,
+            default: false
+        },
+        missedTime: {
+            type: Date
+        },
 
     },
     {
