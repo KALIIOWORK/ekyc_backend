@@ -99,6 +99,14 @@ const eKYCSchema = new Schema(
         customertoken: {
             type: String
         },
+        agentName: {
+            type: String,
+            default: "Not Assigned"
+        },
+        isJoined: {
+            type: Boolean,
+            default: false
+        },
 
     },
     {

@@ -1,4 +1,6 @@
 const axios = require('axios');
+const eKYC = require('../../models/ekyc');
+const User = require('../../models/User');
 
 // The API URL for acquiring the recording resource
 const acquireUrl = `https://api.agora.io/v1/apps/${process.env.APP_ID}/cloud_recording/acquire`;
@@ -121,6 +123,16 @@ exports.startRecording = async (req, res) => {
         // }
 
         // Step 5: Return a success response
+
+        const agent = await User.findOne({ username: req.body.agentUsername });
+        console.log("agent", agent)
+
+        const updateeKYC = await eKYC.findOneAndUpdate(
+            { _id: req.body.ekycId },
+            { agentName: agent.fullName },
+            { new: true }
+        );
+        console.log("updateeKYC", updateeKYC);
 
         console.log("sid", startResponse.data.sid)
         res.status(200).json({

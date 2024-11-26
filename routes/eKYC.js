@@ -14,4 +14,8 @@ router.get('/getListOfeKYC', auth.authenticate, getListOfeKYC)
 const { geteKYCById } = require("../controllers/eKYC/getekycById")
 router.get('/geteKYCById/:id', auth.authenticate, geteKYCById)
 
+//route for toggleIsJoined
+const { toggleIsJoined } = require("../controllers/eKYC/toggleIsJoined")
+router.post('/toggleIsJoined', toggleIsJoined)
+
 module.exports = router

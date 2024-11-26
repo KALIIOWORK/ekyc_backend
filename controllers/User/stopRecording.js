@@ -64,7 +64,8 @@ exports.stopRecording = async (req, res) => {
             { _id: req.body.ekycId },
             {
                 ekycRecording: mp4FileUrl,
-                isekycDone: true // Store only the .mp4 file URL
+                isekycDone: true, // Store only the .mp4 file URL
+                isJoined: false
             },
             { new: true }
         );

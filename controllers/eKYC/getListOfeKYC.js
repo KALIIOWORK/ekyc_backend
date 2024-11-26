@@ -16,6 +16,10 @@ exports.getListOfeKYC = async (req, res) => {
             query.verificationStatus = req.query.verificationStatus;
         }
 
+        if (req.query.isJoined) {
+            query.isJoined = req.query.isJoined;
+        }
+
 
         let eKYCs
 
