@@ -129,7 +129,10 @@ exports.startRecording = async (req, res) => {
 
         const updateeKYC = await eKYC.findOneAndUpdate(
             { _id: req.body.ekycId },
-            { agentName: agent.fullName },
+            {
+                agentName: agent.fullName,
+                isJoined: false,
+            },
             { new: true }
         );
         console.log("updateeKYC", updateeKYC);
