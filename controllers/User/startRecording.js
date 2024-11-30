@@ -81,11 +81,17 @@ exports.startRecording = async (req, res) => {
                     channelType: 1,
                     streamTypes: 2,
                     streamMode: "default",
-                    videoStreamType: 0,
+                    videoStreamType: 1,
                     maxIdleTime: 200,
                     subscribeAudioUids: ["#allstream#"],
                     subscribeVideoUids: ["#allstream#"],
-                    subscribeUidGroup: 0
+                    subscribeUidGroup: 0,
+                    transcodingConfig: {
+                        width: 1280, // Desired width
+                        height: 720, // Desired height
+                        fps: 30,
+                        bitrate: 2500, // Desired bitrate in kbps
+                    }
                 },
                 recordingFileConfig: {
                     avFileType: ["hls", "mp4"]
