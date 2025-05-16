@@ -13,7 +13,8 @@ app.use(bodyParser.json());
 
 //Enable CORS for API requests
 const corsOptions = {
-    origin: false,
+  origin: 'https://ekyc.tech',
+  credentials: true
 };
 app.use(cors(corsOptions));
 
